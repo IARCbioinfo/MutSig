@@ -1,29 +1,35 @@
 ################## BASE IMAGE ######################
-FROM nfcore/base
+FROM python:3.7.3
 
 ################## METADATA ######################
 
-LABEL base_image="nfcore/base"
+LABEL base_image="python"
 LABEL version="1.0"
-LABEL software="purple-nf"
+LABEL software="MutSig-nf"
 LABEL software.version="1.0"
-LABEL about.summary="Container image containing all requirements for **purple-nf pipeline**"
-LABEL about.home="http://github.com/IARCbioinfo/purple-nf"
-LABEL about.documentation="http://github.com/IARCbioinfo/purple-nf/README.md"
-LABEL about.license_file="http://github.com/IARCbioinfo/purple-nf/LICENSE.txt"
-LABEL about.license="GNU-3.0"
+LABEL about.summary="Container image containing all requirements for **mutational signatures analysis**"
+LABEL about.home="https://github.com/IARCbioinfo/MutSig"
+LABEL about.documentation="http://github.com/IARCbioinfo/MutSig/README.md"
+LABEL about.license_file="http://github.com/IARCbioinfo/MutSig/LICENSE.txt"
+LABEL about.license="MIT"
 
 ################## MAINTAINER ######################
 MAINTAINER **digenovaa** <**digenovaa@fellows.iarc.fr**>
 
 ################## INSTALLATION ######################
-COPY environment.yml /
-RUN conda env update -n purple-nf -f /environment.yml && conda clean -a
-ENV PATH /opt/conda/envs/purple-nf/bin:$PATH
-RUN conda env export --name purple-nf > purple-nf-v2.0.yml
-RUN mkdir -p /hmftools
-ADD db /hmftools
-RUN cd /hmftools/hg38/ && gzip -d DiploidRegions.38.bed.gz  && gzip -d  GC_profile.1000bp.38.cnp.gz && gzip -d  GermlineHetPon.38.vcf.gz
+RUN pip install --upgrade pip
+RUN pip install SigProfilerExtractor SigProfilerMatrixGenerator SigProfilerPlotting
+#RUN pip install SigProfilerMatrixGenerator 
+#RUN pip install SigProfilerPlotting
+
+
+#COPY environment.yml /
+#RUN conda env update -n purple-nf -f /environment.yml && conda clean -a
+#ENV PATH /opt/conda/envs/purple-nf/bin:$PATH
+#RUN conda env export --name purple-nf > purple-nf-v2.0.yml
+#RUN mkdir -p /hmftools
+#ADD db /hmftools
+#RUN cd /hmftools/hg38/ && gzip -d DiploidRegions.38.bed.gz  && gzip -d  GC_profile.1000bp.38.cnp.gz && gzip -d  GermlineHetPon.38.vcf.gz
 #we get the code
 #PURPLE
 #ADD https://github.com/hartwigmedical/hmftools/releases/download/purple-v2.52/purple-2.52.jar /hmftools/jars
