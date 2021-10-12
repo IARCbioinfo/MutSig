@@ -12,3 +12,6 @@ The makefile stored in aux_scripts directory provide examples for mutect and str
 
 ## 3. Run Signature analysis
 The python and bash scripts provide examples for both Point mutations callers.
+
+# Docker container
+To avoid install the needed software a Docker container is available at [hub.docker:iarcbioinfo/mutsig](https://hub.docker.com/repository/docker/iarcbioinfo/mutsig) and include the GRCh38 reference.
