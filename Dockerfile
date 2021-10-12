@@ -19,6 +19,8 @@ MAINTAINER **digenovaa** <**digenovaa@fellows.iarc.fr**>
 ################## INSTALLATION ######################
 RUN pip install --upgrade pip
 RUN pip install SigProfilerExtractor SigProfilerMatrixGenerator SigProfilerPlotting
+ADD ./aux_scripts/add_ref_signatures.py /opt
+RUN python /opt/add_ref_signatures.py
 #RUN pip install SigProfilerMatrixGenerator 
 #RUN pip install SigProfilerPlotting
 
