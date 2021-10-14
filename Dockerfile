@@ -21,24 +21,3 @@ RUN pip install --upgrade pip
 RUN pip install SigProfilerExtractor SigProfilerMatrixGenerator SigProfilerPlotting
 ADD ./aux_scripts/add_ref_signatures.py /opt
 RUN python /opt/add_ref_signatures.py
-#RUN pip install SigProfilerMatrixGenerator 
-#RUN pip install SigProfilerPlotting
-
-
-#COPY environment.yml /
-#RUN conda env update -n purple-nf -f /environment.yml && conda clean -a
-#ENV PATH /opt/conda/envs/purple-nf/bin:$PATH
-#RUN conda env export --name purple-nf > purple-nf-v2.0.yml
-#RUN mkdir -p /hmftools
-#ADD db /hmftools
-#RUN cd /hmftools/hg38/ && gzip -d DiploidRegions.38.bed.gz  && gzip -d  GC_profile.1000bp.38.cnp.gz && gzip -d  GermlineHetPon.38.vcf.gz
-#we get the code
-#PURPLE
-#ADD https://github.com/hartwigmedical/hmftools/releases/download/purple-v2.52/purple-2.52.jar /hmftools/jars
-#COVALT
-#ADD https://github.com/hartwigmedical/hmftools/releases/download/cobalt-v1.11/cobalt-1.11.jar /hmftools/jars
-#RUN cd /home/programs && unzip master.zip
-# amber
-#ADD https://github.com/hartwigmedical/hmftools/releases/download/amber-v3.5/amber-3.5.jar /hmftools/jars
-# databases
-#ADD
